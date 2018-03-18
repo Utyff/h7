@@ -23,7 +23,7 @@ void mainInitialize() {
     //HAL_ADC_Start_DMA(&hadc1, (uint32_t *) samplesBuffer, BUF_SIZE);
     //ADC_setParams();
 
-    //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     //GEN_setParams();
 
     //HAL_TIM_Encoder_Start(&htim8, TIM_CHANNEL_1);
@@ -53,7 +53,7 @@ void mainCycle() {
     LCD_ShowxNum(90, 214, (u32) time / 10, 5, 12, 0x0);
     LCD_ShowxNum(120, 214, (u32) firstHalf, 5, 12, 0x0);
 
-    delay_ms(50);
+    delay_ms(30);
 }
 
 #ifdef DEBUG_TRACE_SWO
