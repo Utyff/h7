@@ -4,6 +4,8 @@
 #include "_main.h"
 #include <dwt.h>
 
+#define STM32F746xx
+
 //----------------- LCD port definition ----------------
 // LCD address structure
 typedef struct
