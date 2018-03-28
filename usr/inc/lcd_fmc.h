@@ -4,7 +4,6 @@
 #include "_main.h"
 #include <dwt.h>
 
-#define STM32F746xx
 
 //----------------- LCD port definition ----------------
 // LCD address structure
@@ -21,35 +20,21 @@ typedef struct
 // use Bank1.sector1 of NOR / SRAM, address bits HADDR [27,26]=00
 // for A18 as command line for data command
 // Note that the STM32 will shift to the right one bit when set!
-#define LCD_BASE        ((u32)(0x60000000 | 0x00007FFFE))
+//#define LCD_BASE        ((u32)(0x60000000 | 0x00007FFFE))
+#define LCD_BASE        ((u32)(0xC0000000 | 0x00007FFFE))
 #define LCD             ((LCD_TypeDef *) LCD_BASE)
 
 __STATIC_INLINE void LCD_WR_REG(vu16 regval) {
     LCD->LCD_REG = regval;
-#ifdef STM32F746xx
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-#endif
 }
 
 __STATIC_INLINE void LCD_WR_DATA(vu16 data) {
     LCD->LCD_RAM = data;
-#ifdef STM32F746xx
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-#endif
 }
 
 // Read LCD data
 // Return Value: Value read
 __STATIC_INLINE u16 LCD_RD_DATA(void) {
-#ifdef STM32F746xx
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-    SMALL_DELLAY++;
-#endif
     return LCD->LCD_RAM;
 }
 
