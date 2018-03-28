@@ -2,7 +2,6 @@
 #define __LCD_H
 
 #include "_main.h"
-#include <lcd_fmc.h>
 
 // set the x coordinate instruction
 #define LCD_SET_X 0x2a
@@ -10,6 +9,9 @@
 #define LCD_SET_Y 0x2b
 // begin to write the GRAM command
 #define LCD_WR_RAM_CMD 0x2c
+
+#define MAX_X 320
+#define MAX_Y 240
 
 // LCD important parameter set
 typedef struct {
@@ -85,11 +87,6 @@ void LCD_ShowString(u16 x, u16 y, u16 width, u16 height, u8 size, const char *p,
 void LCD_Scan_Dir(u8 dir);                           // Set the screen scan direction
 void LCD_Display_Dir(u8 dir);                        // set the screen display direction
 void LCD_Set_Window(u16 sx, u16 sy, u16 ex, u16 ey); // Set the window
-
-// Start writing GRAM
-__STATIC_INLINE void LCD_WriteRAM_Prepare(void) {
-    LCD_WR_REG(LCD_WR_RAM_CMD);
-}
 
 #ifdef __cplusplus
 }

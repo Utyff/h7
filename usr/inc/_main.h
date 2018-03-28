@@ -1,10 +1,13 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#ifdef STM32F303xC
+#include "stm32f3xx_hal.h"
+#endif
 #ifdef STM32F407xx
 #include "stm32f4xx_hal.h"
 #endif
-#ifdef STM32F746xx
+#if defined (STM32F765xx) || defined(STM32F746xx)
 #include "stm32f7xx_hal.h"
 #endif
 #ifdef STM32H743xx

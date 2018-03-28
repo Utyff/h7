@@ -47,13 +47,14 @@ void mainCycle() {
 #endif
 
     POINT_COLOR = WHITE;
-    LCD_ShowxNum(0, 214, TIM8->CNT, 5, 12, 0x0);
-    LCD_ShowxNum(30, 214, (u32) button1Count, 5, 12, 0x0);
-    LCD_ShowxNum(60, 214, (u32) ii, 5, 12, 0x0);
-    LCD_ShowxNum(90, 214, (u32) time / 10, 5, 12, 0x0);
-    LCD_ShowxNum(120, 214, (u32) firstHalf, 5, 12, 0x0);
+    BACK_COLOR = BLACK;
+    LCD_ShowxNum(0, 214, TIM8->CNT, 5, 12, 0x01);
+    LCD_ShowxNum(30, 214, (u32) button1Count, 5, 12, 0x01);
+    LCD_ShowxNum(60, 214, (u32) ii, 5, 12, 0x01);
+    LCD_ShowxNum(90, 214, (u32) time / 10, 5, 12, 0x01);
+    LCD_ShowxNum(120, 214, (u32) firstHalf, 5, 12, 0x01);
 
-    delay_ms(30);
+    delay_ms(50);
 }
 
 #ifdef DEBUG_TRACE_SWO
