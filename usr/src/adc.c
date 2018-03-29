@@ -108,15 +108,29 @@ void ADC_setParams() {
 }
 
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+/**
+  * @brief  Conversion complete callback in non-blocking mode
+  * @param  hadc: ADC handle
+  * @retval None
+  */
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
+{
     firstHalf = 0;
+    /* Invalidate Data Cache to get the updated content of the SRAM on the first half of the ADC converted data buffer: 32 bytes */
+    SCB_InvalidateDCache_by_Addr((uint32_t *) &samplesBuffer[0], BUF_SIZE);
 }
 
-
-void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc) {
+/**
+  * @brief  Conversion DMA half-transfer callback in non-blocking mode
+  * @param  hadc: ADC handle
+  * @retval None
+  */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
     firstHalf = 1;
+    /* Invalidate Data Cache to get the updated content of the SRAM on the second half of the ADC converted data buffer: 32 bytes */
+    SCB_InvalidateDCache_by_Addr((uint32_t *) &samplesBuffer[BUF_SIZE/2], BUF_SIZE);
 }
-
 
 void ADC_step_up() {
     if (ScreenTime_adj < 9)
