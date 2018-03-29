@@ -12,7 +12,6 @@ extern "C" {
 // for 216MHz: 216 000 000 / 1 000 000 = 216
 #define DWT_IN_MICROSEC (SystemCoreClock/1000000)
 
-extern int SMALL_DELLAY;
 
 void DWT_Init();
 //void DWT_Delay_tics(uint32_t tics);  // dwt tics

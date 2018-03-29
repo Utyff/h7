@@ -4,8 +4,15 @@
 /* F7
  * TIM1 Configuration
  * CLK  216 mHz
- * PRE           107 => 2 MHz
- * COUNT PERIOD  99 => 20 KHz
+ * PRE           108 - 1 => 2 MHz
+ * COUNT PERIOD  100 - 1 => 20 KHz
+ */
+/* H7
+ * TIM1 Configuration
+ * CLK  - 400 mHz
+ * AHB2 - 200 mHz
+ * PRE           100 - 1 => 2 MHz
+ * COUNT PERIOD  100 - 1 => 20 KHz
  */
 
 struct GEN_param {
