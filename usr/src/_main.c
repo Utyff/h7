@@ -20,7 +20,7 @@ void mainInitialize() {
     DWT_Init();
     LCD_Init();
 
-    HAL_ADC_Start_DMA(&hadc1, (uint32_t *) samplesBuffer, BUF_SIZE);
+    //HAL_ADC_Start_DMA(&hadc1, (uint32_t *) samplesBuffer, BUF_SIZE);
     //ADC_setParams();
 
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
@@ -33,10 +33,21 @@ void mainInitialize() {
     CORECheck();
     FPUCheck();
 }
+/* Converted value declaration */
+uint32_t                 uwConvertedValue;
 
 void mainCycle() {
     drawScreen();
     KEYS_scan();
+
+    if (HAL_ADC_PollForConversion(&hadc1, 10) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    /* Read the converted value */
+    uwConvertedValue = HAL_ADC_GetValue(&hadc1);
+
 
     if ((random() & 7) < 3) HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
 #ifdef LED2_Pin
