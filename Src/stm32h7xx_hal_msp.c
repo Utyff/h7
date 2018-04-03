@@ -90,7 +90,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
   /* USER CODE END ADC1_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_ADC12_CLK_ENABLE();
-  
+//    __HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_CLKP);  /// TODO
+
     /**ADC1 GPIO Configuration    
     PA6     ------> ADC1_INP3 
     */
