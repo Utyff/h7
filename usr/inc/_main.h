@@ -14,6 +14,7 @@
 #include "stm32h7xx_hal.h"
 #endif
 
+#include <stdio.h>
 #include "main.h"
 
 typedef int32_t s32;
