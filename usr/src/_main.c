@@ -21,6 +21,10 @@ void mainInitialize() {
     LCD_Init();
 
     //HAL_ADC_Start_DMA(&hadc1, (uint32_t *) samplesBuffer, BUF_SIZE);
+    if (HAL_ADC_Start(&hadc1) != HAL_OK)
+    {
+        Error_Handler();
+    }
     //ADC_setParams();
 
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
