@@ -39,7 +39,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal.h"
 
-//extern DMA_HandleTypeDef hdma_adc1;
+extern DMA_HandleTypeDef hdma_adc1;
 
 extern void _Error_Handler(char *, int);
 /* USER CODE BEGIN 0 */
