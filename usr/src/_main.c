@@ -36,7 +36,7 @@ void mainInitialize() {
 
 void mainCycle() {
     drawScreen();
-//    KEYS_scan();
+    KEYS_scan();
 
     if ((random() & 7) < 3) HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
 #ifdef LED2_Pin
