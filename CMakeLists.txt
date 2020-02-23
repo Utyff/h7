@@ -32,7 +32,7 @@ PROJECT(h7 C ASM)
 set(CMAKE_CXX_STANDARD 11)
 
 #add_definitions(-DARM_MATH_CM7 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1 )
-add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32H743xx )
+add_definitions(-DUSE_HAL_DRIVER -DSTM32H743xx )
 
 file(GLOB_RECURSE SOURCES "usr/src/*.*" "usr/inc/*.*" "startup/*.*" "Drivers/*.*" "Src/*.*" "Inc/*.*")
 

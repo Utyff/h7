@@ -1,5 +1,5 @@
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __MAIN_H2
+#define __MAIN_H2
 
 #ifdef STM32F303xC
 #include "stm32f3xx_hal.h"
@@ -61,4 +61,4 @@ void SWO_Trace(uint8_t* msg);
 #error Define DUBUG_TRACE destination
 #endif
 
-#endif //__MAIN_H
+#endif //__MAIN_H2
