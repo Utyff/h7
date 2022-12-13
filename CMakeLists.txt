@@ -1,6 +1,6 @@
 SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.24)
 
 # specify the cross compiler
 SET(CMAKE_C_COMPILER_WORKS 1)
@@ -25,14 +25,14 @@ SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32H743VITx_FLASH.ld)
 SET(COMMON_FLAGS "-mcpu=cortex-m7 ${FPU_FLAGS} -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs")
 
 SET(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++11")
-SET(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu99")
-SET(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections -T ${LINKER_SCRIPT}")
+SET(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu11")
+SET(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections,--print-memory-usage -T ${LINKER_SCRIPT}")
 
 PROJECT(h7 C ASM)
 set(CMAKE_CXX_STANDARD 11)
 
 #add_definitions(-DARM_MATH_CM7 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1 )
-add_definitions(-DUSE_HAL_DRIVER -DSTM32H743xx )
+add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32H743xx )
 
 file(GLOB_RECURSE SOURCES "usr/src/*.*" "usr/inc/*.*" "startup/*.*" "Drivers/*.*" "Src/*.*" "Inc/*.*")
 
